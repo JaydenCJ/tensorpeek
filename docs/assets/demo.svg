@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="520" viewBox="0 0 1060 520" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15">
+  <!-- Terminal rendering of a real tensorpeek session (output captured
+       verbatim from a local run on 2026-07-13 against generated fixtures). -->
+  <rect width="1060" height="520" rx="10" fill="#1c2128"/>
+  <rect width="1060" height="34" rx="10" fill="#2d333b"/>
+  <rect y="24" width="1060" height="10" fill="#2d333b"/>
+  <circle cx="20" cy="17" r="6" fill="#f47067"/>
+  <circle cx="40" cy="17" r="6" fill="#e0b543"/>
+  <circle cx="60" cy="17" r="6" fill="#57ab5a"/>
+  <text x="530" y="22" text-anchor="middle" fill="#909dab">tensorpeek — tensor shapes without the 2 GB framework install</text>
+
+  <g fill="#adbac7">
+    <text x="24" y="64"><tspan fill="#6cb6ff">$</tspan> tensorpeek ls model.gguf</text>
+    <text x="24" y="90" fill="#909dab">model.gguf · gguf · 4 tensors · <tspan fill="#96d0ff">24.7 K params</tspan> · 22.0 KiB data</text>
+    <text x="24" y="116" fill="#768390">NAME                    DTYPE  SHAPE   BYTES</text>
+    <text x="24" y="142">token_embd.weight       <tspan fill="#e0b543">q8_0</tspan>   64×256  17.0 KiB</text>
+    <text x="24" y="168">blk.0.attn_norm.weight  <tspan fill="#57ab5a">f32</tspan>    64      256 B</text>
+    <text x="24" y="194">blk.0.ffn_down.weight   <tspan fill="#e0b543">q4_0</tspan>   128×64  4.5 KiB</text>
+    <text x="24" y="220">output_norm.weight      <tspan fill="#57ab5a">f32</tspan>    64      256 B</text>
+
+    <text x="24" y="272"><tspan fill="#6cb6ff">$</tspan> tensorpeek inspect --compact --filter 'fc1.*' model.safetensors</text>
+    <text x="24" y="298" fill="#909dab">{"file":"model.safetensors","format":"safetensors", ... "tensors":[</text>
+    <text x="24" y="324" fill="#909dab">  {"name":<tspan fill="#96d0ff">"fc1.weight"</tspan>,"dtype":<tspan fill="#57ab5a">"f16"</tspan>,"shape":<tspan fill="#e0b543">[8,16]</tspan>,"numel":128, ...},</text>
+    <text x="24" y="350" fill="#909dab">  {"name":<tspan fill="#96d0ff">"fc1.bias"</tspan>,"dtype":<tspan fill="#57ab5a">"f16"</tspan>,"shape":<tspan fill="#e0b543">[16]</tspan>,"numel":16, ...}]}</text>
+
+    <text x="24" y="402"><tspan fill="#6cb6ff">$</tspan> tensorpeek inspect --strict truncated.safetensors >/dev/null; echo $?</text>
+    <text x="24" y="428">tensorpeek: truncated.safetensors: <tspan fill="#f47067">problem:</tspan> data section needs 1024 bytes</text>
+    <text x="24" y="454">  but only 924 are present (<tspan fill="#e0b543">100 missing</tspan>) — truncated file</text>
+    <text x="24" y="480" fill="#f47067">1<tspan fill="#768390">   # CI gate: non-zero, broken checkpoint never ships</tspan></text>
+  </g>
+</svg>
